@@ -20,5 +20,6 @@ module.exports = {
     "prefer-template": 0,
     "no-unused-expressions": 0,
     "no-underscore-dangle": 0,
+    "import/newline-after-import": 0,
   },
 };

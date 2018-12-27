@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/",
+  entry: "./src/js/",
   output: {
     path: path.resolve("dist"),
     filename: "bundle.js",
@@ -18,7 +18,19 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: ["src/scss/stylesheets.scss"],
+              sourceMap: true,
+              output: "./dist/stylesheets.css",
+              outputStyle: "compressed",
+            },
+          },
+        ],
       },
       {
         test: /\.(mp4|mp3|png|jpg|gif|jpeg)$/,

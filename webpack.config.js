@@ -24,9 +24,7 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {
-              includePaths: ["src/scss/stylesheets.scss"],
               sourceMap: true,
-              output: "./dist/stylesheets.css",
               outputStyle: "compressed",
             },
           },

@@ -21,5 +21,8 @@ module.exports = {
     "no-unused-expressions": 0,
     "no-underscore-dangle": 0,
     "import/newline-after-import": 0,
+    "constructor-super": 0,
+    "class-methods-use-this": 0,
+    "no-plusplus": 0,
   },
 };

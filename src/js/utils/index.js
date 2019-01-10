@@ -1,3 +1,5 @@
+import calc from "./calc";
+
 export default {
   chain: (data) => {
     return (...args) => {
@@ -6,4 +8,5 @@ export default {
       }, data);
     };
   },
+  calc,
 };

@@ -24,5 +24,10 @@ module.exports = {
     "constructor-super": 0,
     "class-methods-use-this": 0,
     "no-plusplus": 0,
+    "lines-between-class-members": 0,
+    "no-restricted-syntax": 0,
+    "arrow-parens": 0,
+    "no-prototype-builtins": 0,
+    "no-continue": 0,
   },
 };

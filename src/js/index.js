@@ -1,9 +1,6 @@
-import "../scss/stylesheets.scss";
 import block from "./block";
-import board from "./board";
 
 block.init();
-board.init(10, 10);
 
 const bind = () => {
   // tetris로 옮겨야함.
@@ -11,26 +8,14 @@ const bind = () => {
     const { keyCode } = e;
 
     if (keyCode === 38) {
-      console.log("up");
-      board.update(block.rotate().getBlock());
-    } else {
-      const currentBlockShape = block.getBlock();
-      const point = board.getPoint();
-
-      if (keyCode === 40) {
-        board.setPoint({ y: point.y + 1 });
-        console.log("down");
-      } else if (keyCode === 37) {
-        board.setPoint({ x: point.x - 1 });
-        console.log("left");
-      } else if (keyCode === 39) {
-        board.setPoint({ x: point.x + 1 });
-        console.log("right");
-      }
+      console.log(block.rotate().getBlock());
+    } else if (keyCode === 40) {
+      console.log("down");
+    } else if (keyCode === 37) {
+      console.log("left");
+    } else if (keyCode === 39) {
+      console.log("right");
     }
-
-    console.log(board.getPoint());
-    block.getState();
   });
 };
 

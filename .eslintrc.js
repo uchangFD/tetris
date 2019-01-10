@@ -29,5 +29,6 @@ module.exports = {
     "arrow-parens": 0,
     "no-prototype-builtins": 0,
     "no-continue": 0,
+    "arrow-body-style": 0,
   },
 };

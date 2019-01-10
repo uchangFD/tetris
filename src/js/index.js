@@ -1,9 +1,10 @@
 import _ from "./utils";
 import block from "./block";
 import board from "./board";
+import "../scss/stylesheets.scss";
 
 block.init();
-board.init({ width: 10, height: 10 });
+board.init({ width: 10, height: 10 })(document.querySelector("#tetrisBoard"));
 
 const bind = () => {
   // tetris로 옮겨야함.
@@ -28,8 +29,12 @@ const bind = () => {
       }
 
       const boardPoint = _.calc.pointToDistance(board.getPoint())(block.getBlock());
-      console.log(boardPoint);
+      console.log(boardPoint); // need to paint
     }
+  });
+
+  window.addEventListener("resize", () => {
+    board.setCanvas({ width: 10, height: 10 }, document.querySelector("#tetrisBoard"));
   });
 };
 

@@ -1,42 +1,76 @@
-import shape from "./shape";
-import _ from "./utils";
+import _ from "./utils/underbar";
 
-class Block {
-  constructor() {
-    this.state = {
-      rotateCount: 0,
-      currentBlockState: undefined,
-      currentBlock: undefined,
-    };
-  }
+// rotate 기준점
+// 대각선
 
-  init() {
-    const blockState = shape.getBlock().slice();
-    const state = this.state;
+const blocks = [
+  [
+    // ㄴ
+    {
+      x: 2,
+      y: -1,
+    },
+    // ?
+    {
+      x: 1,
+      y: 2,
+    },
+    // ㄱ
+    {
+      y: 1,
+      x: -2,
+    },
+    // ?
+    {
+      y: -2,
+      x: 1,
+    },
+  ],
+  [
+    {
+      x: 4,
+      y: 0,
+    },
+    {
+      x: 0,
+      y: 4,
+    },
+    {
+      x: -4,
+      y: 0,
+    },
+    {
+      x: 0,
+      y: -4,
+    },
+  ],
+];
 
-    state.rotateCount = 0;
-    state.currentBlockState = blockState;
-    state.currentBlock = blockState[0];
+// createBlock
+const randomNumber = (array) => Math.floor(Math.random() * array.length);
+const randomBlock = (_randomNumber, _blocks) => _blocks[_randomNumber];
+const getBlockStates = () => _(blocks)
+  .chain(randomNumber, randomBlock)
+  .value();
 
-    return this;
-  }
+// rotate
+const getNextBlockState = (blockStates) => {
+  let index = 0;
+  return (_index) => {
+    index = _index || index;
+    return blockStates[index++ % blockStates.length];
+  };
+};
 
-  rotate() {
-    const state = this.state;
-    const totalBlockStateCount = state.currentBlockState.length;
+// add block
+// const addBlock = (blockState) => {
+//   blocks.push(blockState);
+// };
 
-    state.currentBlock = state.currentBlockState[++state.rotateCount % totalBlockStateCount];
-
-    return this;
-  }
-
-  getBlock() {
-    return { ...this.state.currentBlock };
-  }
-
-  isEdge() {
-    return this;
-  }
-}
-
-export default new Block();
+export default {
+  // block 상태(모든 블럭 모양) 가져오기
+  getBlockStates,
+  // block 상태들을 바탕으로 현재 및 회전된 블럭 상태가져오기
+  getNextBlockState,
+  // addBlock,
+};

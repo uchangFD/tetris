@@ -5,8 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+
+      #app::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      #app > div {
+        float: left;
+      }
+      .wrap-customize {
+        margin-right: 20px;
+      }
+      .wrap-customize canvas {
+        display: block;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"><canvas id="tetrisBoard"></canvas></div>
+    <div id="app">
+      <div class="wrap-canvas"><canvas id="tetrisBoard"></canvas></div>
+      <!-- <div class="wrap-customize">
+        <canvas id="addBlock"></canvas> <button type="button">추가</button>
+      </div> -->
+    </div>
   </body>
 </html>
